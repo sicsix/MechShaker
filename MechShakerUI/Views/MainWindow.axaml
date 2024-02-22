@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MechShakerUI.ViewModels"
+        xmlns:views1="clr-namespace:MechShakerUI.Views"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="900"
+        Width="1280" Height="900"
+        MinWidth="1280"
+        MinHeight="900"
+        x:Class="MechShakerUI.Views.MainWindow"
+        x:DataType="viewModels:MainWindowViewModel"
+        Icon="/Assets/mechshakericon.ico"
+        Title="MechShaker"
+        x:CompileBindings="True">
+
+    <!-- <Design.DataContext> -->
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <!-- <viewModels:MainWindowViewModel /> -->
+    <!-- </Design.DataContext> -->
+
+    <TabControl>
+        <TabItem Header="Log" VerticalContentAlignment="Center">
+            <views1:LogView DataContext="{Binding LogViewModel}" />
+        </TabItem>
+        <TabItem Header="Settings" VerticalContentAlignment="Center">
+            <views1:SettingsView DataContext="{Binding SettingsViewModel}" />
+        </TabItem>
+        <TabItem Header="Advanced" VerticalContentAlignment="Center">
+            <views1:AdvancedView DataContext="{Binding SettingsViewModel}" />
+        </TabItem>
+    </TabControl>
+</Window>

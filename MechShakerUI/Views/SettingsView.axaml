@@ -1,0 +1,850 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MechShakerUI.ViewModels"
+             xmlns:controls="clr-namespace:MechShakerUI.Views.Controls"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="680"
+             x:Class="MechShakerUI.Views.SettingsView"
+             x:DataType="viewModels:SettingsViewModel"
+             x:CompileBindings="True"
+             x:Name="ThisControl">
+
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,Auto,*">
+        <ScrollViewer Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalScrollBarVisibility="Visible">
+            <StackPanel HorizontalAlignment="Center" Spacing="-20" Width="800">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Width="612" Spacing="8"
+                            VerticalAlignment="Center" Margin="0">
+                    <TextBlock Text="Output Device:" Width="142" FontWeight="SemiBold" />
+                    <ComboBox ItemsSource="{Binding Devices}"
+                              SelectedItem="{Binding OutputDevice, Mode=TwoWay}"
+                              Margin="70,0,0,0" Width="366" />
+                </StackPanel>
+
+                <!-- Master -->
+                <controls:VolumeControl Header="Master" DataContext="{Binding Master, Mode=TwoWay}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+
+                <!-- BEGIN Weapon Effects Group -->
+                <!-- Lasers -->
+                <controls:VolumeControl Header="Lasers" DataContext="{Binding Lasers}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding Lasers}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding Lasers}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding Lasers}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- TAG -->
+                <controls:VolumeControl Header="TAG" DataContext="{Binding TAG}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding TAG}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding TAG}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding TAG}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Flamers -->
+                <controls:VolumeControl Header="Flamers" DataContext="{Binding Flamers}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding Flamers}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding Flamers}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding Flamers}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tert Frequency:" DataContext="{Binding Flamers}"
+                                        Value="{Binding TertiaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Tert Amplitude:" DataContext="{Binding Flamers}"
+                                        Value="{Binding TertiaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- MachineGuns -->
+                <controls:VolumeControl Header="Machine Guns" DataContext="{Binding MachineGuns}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding MachineGuns}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Length:" DataContext="{Binding MachineGuns}"
+                                        Value="{Binding Length, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="30" Maximum="400" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding MachineGuns}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding MachineGuns}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- AMS -->
+                <controls:VolumeControl Header="AMS" DataContext="{Binding AMS}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding AMS}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Length:" DataContext="{Binding AMS}"
+                                        Value="{Binding Length, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="30" Maximum="400" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding AMS}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding AMS}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Autocannons & Rifles  -->
+                <controls:VolumeControl Header="ACs &amp; Rifles" DataContext="{Binding AutocannonsAndRifles}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Min Frequency:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding MinFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Max Frequency:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding MaxFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Min Amplitude:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding MinAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="10" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Min Length:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding MinLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Max Length:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding MaxLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding AutocannonsAndRifles}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- PPCs  -->
+                <controls:VolumeControl Header="PPCs" DataContext="{Binding PPCs}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Pop Frequency:" DataContext="{Binding PPCs}"
+                                        Value="{Binding PopFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Pop Length:" DataContext="{Binding PPCs}"
+                                        Value="{Binding PopLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Pop Attack End:" DataContext="{Binding PPCs}"
+                                        Value="{Binding PopAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding PopDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Pop Decay Start:" DataContext="{Binding PPCs}"
+                                        Value="{Binding PopDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding PopAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Frequency:" DataContext="{Binding PPCs}"
+                                        Value="{Binding TailFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Tail Amplitude:" DataContext="{Binding PPCs}"
+                                        Value="{Binding TailAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Length:" DataContext="{Binding PPCs}"
+                                        Value="{Binding TailLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Attack End:" DataContext="{Binding PPCs}"
+                                        Value="{Binding TailAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding TailDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Decay Start:" DataContext="{Binding PPCs}"
+                                        Value="{Binding TailDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding TailAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Missiles -->
+                <controls:VolumeControl Header="Missiles" DataContext="{Binding Missiles}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Launch Frequency:" DataContext="{Binding Missiles}"
+                                        Value="{Binding LaunchFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Launch Length:" DataContext="{Binding Missiles}"
+                                        Value="{Binding LaunchLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Launch Attack End:" DataContext="{Binding Missiles}"
+                                        Value="{Binding LaunchAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding LaunchDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Launch Decay Start:" DataContext="{Binding Missiles}"
+                                        Value="{Binding LaunchDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding LaunchAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Frequency:" DataContext="{Binding Missiles}"
+                                        Value="{Binding TailFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Tail Amplitude:" DataContext="{Binding Missiles}"
+                                        Value="{Binding TailAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Length:" DataContext="{Binding Missiles}"
+                                        Value="{Binding TailLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="60" Maximum="2000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Attack End:" DataContext="{Binding Missiles}"
+                                        Value="{Binding TailAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding TailDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tail Decay Start:" DataContext="{Binding Missiles}"
+                                        Value="{Binding TailDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding TailAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Stream Factor:" DataContext="{Binding Missiles}"
+                                        Value="{Binding StreamFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="5" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <!-- END Weapons Effects Group -->
+
+                <!-- BEGIN Impact Effects Group -->
+                <!-- Melee -->
+                <controls:VolumeControl Header="Melee" DataContext="{Binding Melee}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Hit Frequency:" DataContext="{Binding Melee}"
+                                        Value="{Binding HitFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Hit Length:" DataContext="{Binding Melee}"
+                                        Value="{Binding HitLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="200" Maximum="800" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Hit Attack End:" DataContext="{Binding Melee}"
+                                        Value="{Binding HitAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding HitDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Hit Decay Start:" DataContext="{Binding Melee}"
+                                        Value="{Binding HitDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding HitAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Swing Frequency:" DataContext="{Binding Melee}"
+                                        Value="{Binding SwingFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Swing Length:" DataContext="{Binding Melee}"
+                                        Value="{Binding SwingLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="400" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Swing Attack End:" DataContext="{Binding Melee}"
+                                        Value="{Binding SwingAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding SwingDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Swing Decay Start:" DataContext="{Binding Melee}"
+                                        Value="{Binding SwingDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding SwingAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Swing Amplitude:" DataContext="{Binding Melee}"
+                                        Value="{Binding SwingAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Mass Factor:" DataContext="{Binding Melee}"
+                                        Value="{Binding MassFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Footsteps -->
+                <controls:VolumeControl Header="Footsteps" DataContext="{Binding Footsteps}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Length:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding Length, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="200" Maximum="800" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Speed Factor:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding SpeedFactor, Mode=TwoWay}" Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Mass Factor:" DataContext="{Binding Footsteps}"
+                                        Value="{Binding MassFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Landing Impacts -->
+                <controls:VolumeControl Header="Landing Impacts" DataContext="{Binding LandingImpacts}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding LandingImpacts}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Length:" DataContext="{Binding LandingImpacts}"
+                                        Value="{Binding Length, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="200" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding LandingImpacts}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding LandingImpacts}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <!-- END Impact Effects Group -->
+
+
+                <!-- BEGIN Damage Effects Group -->
+                <!-- Laser Damage -->
+                <controls:VolumeControl Header="Laser Damage" DataContext="{Binding LaserDamage}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding LaserDamage}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding LaserDamage}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding LaserDamage}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Projectile Damage -->
+                <controls:VolumeControl Header="Projectile Damage" DataContext="{Binding ProjectileDamage}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Max Length:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding MaxLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Length Exponent:" DataContext="{Binding ProjectileDamage}"
+                                        Value="{Binding LengthExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Missile Damage -->
+                <controls:VolumeControl Header="Missile Damage" DataContext="{Binding MissileDamage}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Max Length:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding MaxLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Length Exponent:" DataContext="{Binding MissileDamage}"
+                                        Value="{Binding LengthExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Melee Damage -->
+                <controls:VolumeControl Header="Melee Damage" DataContext="{Binding MeleeDamage}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Max Length:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding MaxLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Length Exponent:" DataContext="{Binding MeleeDamage}"
+                                        Value="{Binding LengthExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Explosion Damage -->
+                <controls:VolumeControl Header="Explosion Damage" DataContext="{Binding ExplosionDamage}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Max Length:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding MaxLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Length Exponent:" DataContext="{Binding ExplosionDamage}"
+                                        Value="{Binding LengthExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Part Destruction -->
+                <controls:VolumeControl Header="Part Destruction" DataContext="{Binding PartDestruction}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Length:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding Length, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="3000" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Attack End:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding AttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding DecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Decay Start:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding DecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding AttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Length:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SecondaryLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="3000" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Sec Attack End:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SecondaryAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding SecondaryDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Sec Decay Start:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SecondaryDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding SecondaryAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Head Factor:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding HeadFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="C. Torso Factor:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding CenterTorsoFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Side Torso Factor:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding SideTorsoFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Arms Factor:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding ArmFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Legs Factor:" DataContext="{Binding PartDestruction}"
+                                        Value="{Binding LegFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <!-- END Damage Effects Group -->
+
+                <!-- Torso Twist -->
+                <controls:VolumeControl Header="Torso Twist" DataContext="{Binding TorsoTwist}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding TorsoTwist}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Transition Time:" DataContext="{Binding TorsoTwist}"
+                                        Value="{Binding TransitionTime, Mode=TwoWay}" Units="ms"
+                                        Minimum="5" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Mass Factor:" DataContext="{Binding TorsoTwist}"
+                                        Value="{Binding MassFactor, Mode=TwoWay}" Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Jump Jets -->
+                <controls:VolumeControl Header="Jump Jets" DataContext="{Binding JumpJets}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Tert Frequency:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding TertiaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Tert Amplitude:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding TertiaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Transition On:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding TransitionOnTime, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="10" Maximum="500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Transition Off:" DataContext="{Binding JumpJets}"
+                                        Value="{Binding TransitionOffTime, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="500" Maximum="3000" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- MASC -->
+                <controls:VolumeControl Header="MASC" DataContext="{Binding MASC}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Frequency:" DataContext="{Binding MASC}"
+                                        Value="{Binding Frequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Frequency:" DataContext="{Binding MASC}"
+                                        Value="{Binding SecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding MASC}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Gauge Exponent:" DataContext="{Binding MASC}"
+                                        Value="{Binding GaugeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <!-- Dropship -->
+                <controls:VolumeControl Header="Dropship" DataContext="{Binding Dropship}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Flight Frequency:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Flight Amplitude:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Flight Sec Freq:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightSecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Flight Sec Amp:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightSecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Flight Tert Freq:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightTertiaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Flight Tert Amp:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightTertiaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Flight Transition:" DataContext="{Binding Dropship}"
+                                        Value="{Binding FlightTransitionOff, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="500" Maximum="5000" Step="100"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Landed Frequency:" DataContext="{Binding Dropship}"
+                                        Value="{Binding LandedFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Landed Length:" DataContext="{Binding Dropship}"
+                                        Value="{Binding LandedLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="200" Maximum="3000" Step="50"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Landed Attack End:" DataContext="{Binding Dropship}"
+                                        Value="{Binding LandedAttackEnd, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="{Binding LandedDecayStart}" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Landed Decay Start:" DataContext="{Binding Dropship}"
+                                        Value="{Binding LandedDecayStart, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="{Binding LandedAttackEnd}" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Landed Amplitude:" DataContext="{Binding Dropship}"
+                                        Value="{Binding LandedAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="TTable Frequency:" DataContext="{Binding Dropship}"
+                                        Value="{Binding TurntableFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="TTable Amplitude:" DataContext="{Binding Dropship}"
+                                        Value="{Binding TurntableAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="TTable Sec Freq:" DataContext="{Binding Dropship}"
+                                        Value="{Binding TurntableSecondaryFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="TTable Sec Amp:" DataContext="{Binding Dropship}"
+                                        Value="{Binding TurntableSecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="TTable Transition:" DataContext="{Binding Dropship}"
+                                        Value="{Binding TurntableTransitionTime, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="100" Maximum="1500" Step="10"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+
+                <controls:VolumeControl Header="Powering" DataContext="{Binding Powering}"
+                                        Volume="{Binding Volume, Mode=TwoWay}"
+                                        Enabled="{Binding Enabled, Mode=TwoWay}" />
+                <controls:SliderControl Label="Start Frequency:" DataContext="{Binding Powering}"
+                                        Value="{Binding StartFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="End Frequency:" DataContext="{Binding Powering}"
+                                        Value="{Binding EndFrequency, Mode=TwoWay}"
+                                        Units="Hz"
+                                        Minimum="10" Maximum="120" Step="1" />
+                <controls:SliderControl Label="Start Amplitude:" DataContext="{Binding Powering}"
+                                        Value="{Binding StartAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Sec Freq Factor:" DataContext="{Binding Powering}"
+                                        Value="{Binding SecondaryFrequencyFactor, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="25" Maximum="200" Step="5" />
+                <controls:SliderControl Label="Sec Amplitude:" DataContext="{Binding Powering}"
+                                        Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
+                                        Units="%"
+                                        Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Init Delay:" DataContext="{Binding Powering}"
+                                        Value="{Binding InitDelay, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="0" Maximum="3000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Init Length:" DataContext="{Binding Powering}"
+                                        Value="{Binding InitLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="2500" Maximum="5000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Powering Delay:" DataContext="{Binding Powering}"
+                                        Value="{Binding PoweringUpDelay, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="0" Maximum="3000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Powering Length:" DataContext="{Binding Powering}"
+                                        Value="{Binding PoweringUpLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="4000" Maximum="8000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Shutdown Delay:" DataContext="{Binding Powering}"
+                                        Value="{Binding ShuttingDownDelay, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="0" Maximum="3000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Shutdown Length:" DataContext="{Binding Powering}"
+                                        Value="{Binding ShuttingDownLength, Mode=TwoWay}"
+                                        Units="ms"
+                                        Minimum="2500" Maximum="5000" Step="20"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+            </StackPanel>
+        </ScrollViewer>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal"
+                    Spacing="8" Margin="8">
+            <Button Content="&#xe72c;" Command="{Binding RevertCommand}" ToolTip.Tip="Revert to default" />
+            <Button Content="&#xe7a7;" Command="{Binding UndoCommand}" ToolTip.Tip="Undo changes" />
+            <Button Content="&#xe74e;" Command="{Binding SaveCommand}" ToolTip.Tip="Save" />
+        </StackPanel>
+    </Grid>
+
+
+</UserControl>

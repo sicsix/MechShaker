@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MechShakerUI/App.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/AdvancedView.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/EffectSettingsControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/EffectSliderSetting.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/EffectVolumeControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/FilterControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/SliderControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/Test1.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/ToggleControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/VolumeControl.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/Controls/test.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/LogView.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/MainWindow.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+        <entry key="MechShakerUI/Views/SettingsView.axaml" value="MechShakerUI/MechShakerUI.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

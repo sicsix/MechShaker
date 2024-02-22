@@ -1,0 +1,227 @@
+OutputDevice: Speakers (High Definition Audio Device)
+Latency: 75
+Master:
+  Volume: -6
+  Enabled: true
+Lasers:
+  Frequency: 80
+  SecondaryFrequency: 90
+  SecondaryAmplitude: 40
+  Volume: -7
+  Enabled: true
+TAG:
+  Frequency: 80
+  SecondaryFrequency: 90
+  SecondaryAmplitude: 40
+  Volume: -22
+  Enabled: true
+Flamers:
+  Frequency: 80
+  SecondaryFrequency: 60
+  SecondaryAmplitude: 25
+  TertiaryFrequency: 35
+  TertiaryAmplitude: 20
+  Volume: -22
+  Enabled: true
+MachineGuns:
+  Frequency: 58
+  Length: 60
+  AttackEnd: 0
+  DecayStart: 30
+  Volume: -11
+  Enabled: true
+AMS:
+  Frequency: 68
+  Length: 40
+  AttackEnd: 0
+  DecayStart: 10
+  Volume: -12
+  Enabled: true
+AutocannonsAndRifles:
+  MinFrequency: 35
+  MaxFrequency: 50
+  MinAmplitude: 80
+  MinLength: 140
+  MaxLength: 800
+  AttackEnd: 5
+  DecayStart: 30
+  Volume: -9
+  Enabled: true
+PPCs:
+  PopFrequency: 30
+  PopAttackEnd: 40
+  PopDecayStart: 60
+  PopLength: 120
+  TailFrequency: 85
+  TailAmplitude: 50
+  TailAttackEnd: 40
+  TailDecayStart: 40
+  TailLength: 700
+  Volume: -3
+  Enabled: true
+Missiles:
+  LaunchFrequency: 45
+  LaunchAttackEnd: 50
+  LaunchDecayStart: 50
+  LaunchLength: 60
+  TailFrequency: 45
+  TailAmplitude: 100
+  TailAttackEnd: 5
+  TailDecayStart: 20
+  TailLength: 800
+  StreamFactor: 40
+  Volume: -9
+  Enabled: true
+Melee:
+  HitFrequency: 28
+  HitLength: 450
+  HitAttackEnd: 0
+  HitDecayStart: 40
+  SwingFrequency: 35
+  SwingLength: 1100
+  SwingAttackEnd: 20
+  SwingDecayStart: 20
+  SwingAmplitude: 75
+  MassFactor: 75
+  Volume: -7
+  Enabled: true
+Footsteps:
+  Frequency: 28
+  Length: 440
+  AttackEnd: 10
+  DecayStart: 75
+  SpeedFactor: 40
+  MassFactor: 65
+  Volume: -15
+  Enabled: true
+LandingImpacts:
+  Frequency: 28
+  Length: 800
+  AttackEnd: 5
+  DecayStart: 50
+  Volume: -3
+  Enabled: true
+LaserDamage:
+  Frequency: 68
+  SecondaryFrequency: 76
+  SecondaryAmplitude: 30
+  Volume: -4
+  Enabled: true
+ProjectileDamage:
+  Frequency: 28
+  AttackEnd: 0
+  DecayStart: 40
+  MaxLength: 700
+  AmplitudeExponent: 0.2
+  LengthExponent: 0.4
+  Volume: -7
+  Enabled: true
+MissileDamage:
+  Frequency: 32
+  AttackEnd: 0
+  DecayStart: 10
+  MaxLength: 240
+  AmplitudeExponent: 0.3
+  LengthExponent: 0.15
+  Volume: -17
+  Enabled: true
+MeleeDamage:
+  Frequency: 30
+  AttackEnd: 0
+  DecayStart: 20
+  MaxLength: 1150
+  AmplitudeExponent: 0.18
+  LengthExponent: 0.18
+  Volume: -5
+  Enabled: true
+ExplosionDamage:
+  Frequency: 25
+  AttackEnd: 0
+  DecayStart: 20
+  MaxLength: 1400
+  AmplitudeExponent: 0.08
+  LengthExponent: 0.15
+  Volume: -6
+  Enabled: true
+PartDestruction:
+  Frequency: 22
+  Length: 700
+  AttackEnd: 0
+  DecayStart: 85
+  SecondaryFrequency: 27
+  SecondaryAmplitude: 90
+  SecondaryLength: 1500
+  SecondaryAttackEnd: 5
+  SecondaryDecayStart: 40
+  HeadFactor: 100
+  CenterTorsoFactor: 100
+  SideTorsoFactor: 85
+  ArmFactor: 65
+  LegFactor: 75
+  Volume: -7
+  Enabled: true
+TorsoTwist:
+  Frequency: 70
+  TransitionTime: 50
+  MassFactor: 65
+  Volume: -9
+  Enabled: true
+JumpJets:
+  Frequency: 50
+  SecondaryFrequency: 65
+  SecondaryAmplitude: 75
+  TertiaryFrequency: 34
+  TertiaryAmplitude: 40
+  TransitionOnTime: 30
+  TransitionOffTime: 1500
+  Volume: -18
+  Enabled: true
+MASC:
+  Frequency: 78
+  SecondaryFrequency: 64
+  SecondaryAmplitude: 50
+  GaugeExponent: 0.6
+  Volume: -15
+  Enabled: true
+Dropship:
+  FlightFrequency: 80
+  FlightAmplitude: 75
+  FlightSecondaryFrequency: 60
+  FlightSecondaryAmplitude: 75
+  FlightTertiaryFrequency: 35
+  FlightTertiaryAmplitude: 30
+  FlightTransitionOff: 2500
+  LandedFrequency: 28
+  LandedAmplitude: 100
+  LandedLength: 2000
+  LandedAttackEnd: 15
+  LandedDecayStart: 30
+  TurntableFrequency: 70
+  TurntableAmplitude: 50
+  TurntableSecondaryFrequency: 25
+  TurntableSecondaryAmplitude: 25
+  TurntableTransitionTime: 500
+  Volume: -10
+  Enabled: true
+Powering:
+  StartFrequency: 55
+  EndFrequency: 70
+  StartAmplitude: 60
+  SecondaryFrequencyFactor: 75
+  SecondaryAmplitude: 20
+  InitDelay: 0
+  InitLength: 5000
+  PoweringUpDelay: 0
+  PoweringUpLength: 4000
+  ShuttingDownDelay: 0
+  ShuttingDownLength: 3300
+  Volume: -11
+  Enabled: true
+AdvancedMode: false
+DebugLogging: false
+LowPassFilter:
+  Frequency: 120
+  Enabled: false
+HighPassFilter:
+  Frequency: 10
+  Enabled: false

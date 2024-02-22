@@ -1,0 +1,30 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:MechShakerUI.ViewModels"
+             xmlns:controls="clr-namespace:MechShakerUI.Views.Controls"
+             mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="680"
+             x:Class="MechShakerUI.Views.AdvancedView"
+             x:DataType="viewModels:SettingsViewModel"
+             x:CompileBindings="True">
+    <Grid RowDefinitions="*,Auto" ColumnDefinitions="*,Auto,*">
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Spacing="-20" Width="768">
+            <controls:ToggleControl Label="Advanced Mode:" Enabled="{Binding AdvancedMode, Mode=TwoWay}" />
+            <controls:ToggleControl Label="Debug Logging:" Enabled="{Binding DebugLogging, Mode=TwoWay}" />
+            <controls:SliderControl Label="Audio Latency:" Value="{Binding Latency, Mode=TwoWay}"
+                                    Units="ms"
+                                    Minimum="30" Maximum="100" Step="5" />
+            <controls:FilterControl Label="Low Pass Filter:" Frequency="{Binding LowPassLowPassFilter.Frequency, Mode=TwoWay}"
+                                    Enabled="{Binding LowPassLowPassFilter.Enabled, Mode=TwoWay}" />
+            <controls:FilterControl Label="High Pass Filter:" Frequency="{Binding HighPassLowPassFilter.Frequency, Mode=TwoWay}"
+                                    Enabled="{Binding HighPassLowPassFilter.Enabled, Mode=TwoWay}" />
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal"
+                    Spacing="8" Margin="8">
+            <Button Content="&#xe72c;" Command="{CompiledBinding RevertCommand}" ToolTip.Tip="Revert to default" />
+            <Button Content="&#xe7a7;" Command="{Binding UndoCommand}" ToolTip.Tip="Undo changes" />
+            <Button Content="&#xe74e;" Command="{Binding SaveCommand}" ToolTip.Tip="Save" />
+        </StackPanel>
+    </Grid>
+</UserControl>

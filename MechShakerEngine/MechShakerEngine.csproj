@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PublishSingleFile>false</PublishSingleFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MechShakerReader\MechShakerReader.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MathNet.Filtering" Version="0.7.0"/>
+        <PackageReference Include="NAudio" Version="2.2.1" />
+        <PackageReference Include="Serilog" Version="3.1.1" />
+        <PackageReference Include="YamlDotNet" Version="15.1.1" />
+    </ItemGroup>
+</Project>
