@@ -1,0 +1,26 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MechShakerUI.Views.Controls.VolumeControl"
+             x:Name="ThisControl">
+    <StackPanel HorizontalAlignment="Center" Width="612">
+        <TextBlock
+            Text="{Binding Header, ElementName=ThisControl}"
+            FontSize="20" FontWeight="Bold" Margin="8, 32, 0, -8" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" Spacing="8"
+                    Margin="0">
+            <TextBlock Text="Volume:" Width="142" FontWeight="SemiBold" />
+            <TextBlock Text="{Binding Volume, ElementName=ThisControl, StringFormat='{}{0}'}" Width="40" VerticalAlignment="Center"
+                       FontWeight="SemiBold" TextAlignment="Right" />
+            <TextBlock Text="dB" Width="20" VerticalAlignment="Center" FontWeight="SemiBold" TextAlignment="Left"
+                       Margin="-12, 0, 0, 0" />
+            <Slider Value="{Binding Volume, ElementName=ThisControl, Mode=TwoWay}" Width="340" Minimum="-40" Maximum="0"
+                    IsSnapToTickEnabled="True"
+                    TickFrequency="1"
+                    TickPlacement="BottomRight" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            <CheckBox IsChecked="{Binding Enabled, ElementName=ThisControl, Mode=TwoWay}" Margin="10,0,0,0" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>
