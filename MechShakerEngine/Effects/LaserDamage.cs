@@ -9,7 +9,7 @@ internal class LaserDamage : Effect<DamagedEvent>
     private readonly WaveGenerator _waveGenerator    = new(false);
     private readonly WaveGenerator _secWaveGenerator = new(false);
 
-    private const float DPSFactor  = 15.0f;
+    private const float DPSFactor  = 10.0f;
     private const float Transition = 0.025f;
     private const float TickTime   = 0.5f;
     private const uint  TickCycles = (uint)(TickTime * Audio.SampleRate);
@@ -17,6 +17,7 @@ internal class LaserDamage : Effect<DamagedEvent>
     private float _freq;
     private float _secFreq;
     private float _secAmp;
+    private float _amplitudeExponent;
 
     private readonly record struct LaserInstance(float DPS, uint Expires);
 
@@ -42,7 +43,7 @@ internal class LaserDamage : Effect<DamagedEvent>
         for (int i = 0; i < _instances.Count; i++)
         {
             var instance = _instances[i];
-            amp += instance.DPS / DPSFactor;
+            amp += MathF.Pow(MathF.Min(instance.DPS / DPSFactor, 1), _amplitudeExponent) * Volume.Amplitude;
             if (instance.Expires < bufferEndClock)
                 _instances.RemoveAt(i--);
         }
@@ -66,8 +67,9 @@ internal class LaserDamage : Effect<DamagedEvent>
     protected override void OnUpdateSettings(Settings.Settings s)
     {
         UpdateVolume(s.LaserDamage);
-        _freq    = s.LaserDamage.Frequency;
-        _secFreq = s.LaserDamage.SecondaryFrequency;
-        _secAmp  = s.LaserDamage.SecondaryAmplitude / 100f;
+        _freq              = s.LaserDamage.Frequency;
+        _secFreq           = s.LaserDamage.SecondaryFrequency;
+        _secAmp            = s.LaserDamage.SecondaryAmplitude / 100f;
+        _amplitudeExponent = s.LaserDamage.AmplitudeExponent;
     }
 }
