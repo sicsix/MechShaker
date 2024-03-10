@@ -7,7 +7,7 @@ namespace MechShakerUI.ViewModels.SettingsViewModels;
 internal partial class LaserDamageSVM : SettingsViewModelBase
 {
     [ObservableProperty]
-    private float _volume, _frequency, _secondaryFrequency, _secondaryAmplitude;
+    private float _volume, _frequency, _secondaryFrequency, _secondaryAmplitude, _amplitudeExponent;
 
     [ObservableProperty]
     private bool _enabled;
@@ -22,6 +22,7 @@ internal partial class LaserDamageSVM : SettingsViewModelBase
         Settings.LaserDamage.Frequency          = Frequency;
         Settings.LaserDamage.SecondaryFrequency = SecondaryFrequency;
         Settings.LaserDamage.SecondaryAmplitude = SecondaryAmplitude;
+        Settings.LaserDamage.AmplitudeExponent  = AmplitudeExponent;
         UpdateEngineSettings();
     }
 
@@ -32,5 +33,6 @@ internal partial class LaserDamageSVM : SettingsViewModelBase
         Frequency          = s.LaserDamage.Frequency;
         SecondaryFrequency = s.LaserDamage.SecondaryFrequency;
         SecondaryAmplitude = s.LaserDamage.SecondaryAmplitude;
+        AmplitudeExponent  = s.LaserDamage.AmplitudeExponent;
     }
 }

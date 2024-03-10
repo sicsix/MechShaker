@@ -7,7 +7,8 @@ Lasers:
   Frequency: 80
   SecondaryFrequency: 90
   SecondaryAmplitude: 40
-  Volume: -7
+  AmplitudeExponent: 0.45
+  Volume: -12
   Enabled: true
 TAG:
   Frequency: 80
@@ -45,7 +46,7 @@ AutocannonsAndRifles:
   MaxLength: 800
   AttackEnd: 5
   DecayStart: 30
-  Volume: -9
+  Volume: -11
   Enabled: true
 PPCs:
   PopFrequency: 30
@@ -105,6 +106,7 @@ LaserDamage:
   Frequency: 68
   SecondaryFrequency: 76
   SecondaryAmplitude: 30
+  AmplitudeExponent: 0.45
   Volume: -4
   Enabled: true
 ProjectileDamage:

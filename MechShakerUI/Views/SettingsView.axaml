@@ -44,6 +44,11 @@
                                         Units="%"
                                         Minimum="0" Maximum="100" Step="5"
                                         IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding Lasers}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
 
                 <!-- TAG -->
                 <controls:VolumeControl Header="TAG" DataContext="{Binding TAG}"
@@ -408,6 +413,11 @@
                                         Value="{Binding SecondaryAmplitude, Mode=TwoWay}"
                                         Units="%"
                                         Minimum="0" Maximum="100" Step="5"
+                                        IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
+                <controls:SliderControl Label="Amplitude Exponent:" DataContext="{Binding LaserDamage}"
+                                        Value="{Binding AmplitudeExponent, Mode=TwoWay}"
+                                        Units=""
+                                        Minimum="0.01" Maximum="1" Step="0.01"
                                         IsVisible="{Binding ((viewModels:SettingsViewModel)DataContext).AdvancedMode, ElementName=ThisControl}" />
 
                 <!-- Projectile Damage -->
