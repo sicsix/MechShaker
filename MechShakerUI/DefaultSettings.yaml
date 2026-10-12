@@ -221,6 +221,8 @@ Powering:
   Enabled: true
 AdvancedMode: false
 DebugLogging: false
+ForceClearBuffers: false
+UseSharedAudioMode: false
 LowPassFilter:
   Frequency: 120
   Enabled: false
