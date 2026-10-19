@@ -12,6 +12,8 @@
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Spacing="-20" Width="768">
             <controls:ToggleControl Label="Advanced Mode:" Enabled="{Binding AdvancedMode, Mode=TwoWay}" />
             <controls:ToggleControl Label="Debug Logging:" Enabled="{Binding DebugLogging, Mode=TwoWay}" />
+            <controls:ToggleControl Label="Force Clear Buffers:" Enabled="{Binding ForceClearBuffers, Mode=TwoWay}" />
+            <controls:ToggleControl Label="Shared Audio Mode:" Enabled="{Binding UseSharedAudioMode, Mode=TwoWay}" />
             <controls:SliderControl Label="Audio Latency:" Value="{Binding Latency, Mode=TwoWay}"
                                     Units="ms"
                                     Minimum="30" Maximum="100" Step="5" />

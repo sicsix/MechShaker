@@ -13,6 +13,7 @@ public class Engine : IDisposable
     private CancellationTokenSource? _audioToken;
     private Task?                    _audioTask;
     private int                      _currentLatency;
+    private bool                     _useSharedAudioMode;
 
     public async void Dispose()
     {
@@ -55,11 +56,11 @@ public class Engine : IDisposable
         }
     }
 
-    private void Start(string? deviceName, int latency)
+    private void Start(string? deviceName, int latency, bool sharedMode)
     {
         _audioToken = new CancellationTokenSource();
         // TODO Need to know if this fails
-        _audioTask = Task.Run(() => _audio.Start(deviceName, latency, _audioToken.Token));
+        _audioTask = Task.Run(() => _audio.Start(deviceName, latency, sharedMode, _audioToken.Token));
     }
 
     private async void Stop()
@@ -72,12 +73,13 @@ public class Engine : IDisposable
     public async void UpdateSettings(Settings.Settings settings)
     {
         _audio.UpdateSettings(settings);
-        if (_audioOutputDeviceName == settings.OutputDevice && _currentLatency == settings.Latency)
+        if (_audioOutputDeviceName == settings.OutputDevice && _currentLatency == settings.Latency && _useSharedAudioMode == settings.UseSharedAudioMode)
             return;
         _audioOutputDeviceName = settings.OutputDevice;
         _currentLatency        = settings.Latency;
+        _useSharedAudioMode    = settings.UseSharedAudioMode;
         await Task.Run(Stop);
-        Start(settings.OutputDevice, settings.Latency);
+        Start(settings.OutputDevice, settings.Latency, settings.UseSharedAudioMode);
     }
 
     public static IEnumerable<string> GetOutputDevices()

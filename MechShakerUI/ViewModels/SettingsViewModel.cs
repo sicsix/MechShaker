@@ -54,6 +54,12 @@ internal partial class SettingsViewModel : SettingsViewModelBase
     private bool _debugLogging;
 
     [ObservableProperty]
+    private bool _forceClearBuffers;
+
+    [ObservableProperty]
+    private bool _useSharedAudioMode;
+
+    [ObservableProperty]
     private bool _advancedMode;
 
     public LowPassFilterSVM  LowPassLowPassFilter  { get; } = new();
@@ -118,7 +124,9 @@ internal partial class SettingsViewModel : SettingsViewModelBase
         OutputDevice = s.OutputDevice;
         Latency      = s.Latency;
         AdvancedMode = s.AdvancedMode;
-        DebugLogging = s.DebugLogging;
+        DebugLogging    = s.DebugLogging;
+        ForceClearBuffers = s.ForceClearBuffers;
+        UseSharedAudioMode = s.UseSharedAudioMode;
 
         foreach (var svm in _svms)
         {
@@ -166,6 +174,24 @@ internal partial class SettingsViewModel : SettingsViewModelBase
         Logging.LevelSwitch.MinimumLevel = value ? LogEventLevel.Verbose : LogEventLevel.Information;
         if (value)
             Logging.At("Settings").Debug("Debug Logging Enabled");
+    }
+
+    partial void OnForceClearBuffersChanged(bool value)
+    {
+        Settings.ForceClearBuffers = value;
+        if (SupressUpdates)
+            return;
+        Logging.At("Settings").Debug("Force Clear Buffers {State}", value ? "Enabled" : "Disabled");
+        UpdateEngineSettings();
+    }
+
+    partial void OnUseSharedAudioModeChanged(bool value)
+    {
+        Settings.UseSharedAudioMode = value;
+        if (SupressUpdates)
+            return;
+        Logging.At("Settings").Debug("Shared Audio Mode {State}", value ? "Enabled" : "Disabled");
+        UpdateEngineSettings();
     }
 
     public ICommand RevertCommand { get; }

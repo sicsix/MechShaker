@@ -29,6 +29,8 @@ public class Settings
     public PoweringSettings             Powering             { get; set; } = new();
     public bool                         AdvancedMode         { get; set; }
     public bool                         DebugLogging         { get; set; }
+    public bool                         ForceClearBuffers    { get; set; }
+    public bool                         UseSharedAudioMode   { get; set; }
     public FilterSettings               LowPassFilter        { get; set; } = new();
     public FilterSettings               HighPassFilter       { get; set; } = new();
 }

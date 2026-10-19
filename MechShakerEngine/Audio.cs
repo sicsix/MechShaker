@@ -12,7 +12,8 @@ namespace MechShakerEngine;
 
 internal class Audio : ISampleProvider
 {
-    public bool       Enabled      { get; private set; }
+    public bool       Enabled            { get; private set; }
+    public bool       ForceClearBuffers  { get; private set; }
     public Volume     MasterVolume { get; private set; }
     public WaveFormat WaveFormat   { get; }
     public MMDevice?  OutputDevice { get; private set; }
@@ -285,7 +286,7 @@ internal class Audio : ISampleProvider
         _timer.Start();
     }
 
-    public void Start(string? deviceName, int latency, CancellationToken token)
+    public void Start(string? deviceName, int latency, bool sharedAudioMode, CancellationToken token)
     {
         var enumerator = new MMDeviceEnumerator();
         var device = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active)
@@ -302,7 +303,7 @@ internal class Audio : ISampleProvider
         WasapiOut wo;
         try
         {
-            wo = new WasapiOut(device, AudioClientShareMode.Exclusive, true, latency);
+            wo = new WasapiOut(device, sharedAudioMode ? AudioClientShareMode.Shared : AudioClientShareMode.Exclusive, true, latency);
             wo.Init(this);
             wo.Play();
 
@@ -338,6 +339,7 @@ internal class Audio : ISampleProvider
         float previousdB    = MasterVolume.dB;
 
         Enabled      = settings.Master.Enabled;
+        ForceClearBuffers = settings.ForceClearBuffers;
         MasterVolume = new Volume(settings.Master.Volume);
 
         if (switchedState || previousdB != MasterVolume.dB)
@@ -351,6 +353,10 @@ internal class Audio : ISampleProvider
 
     public int Read(float[] buffer, int offset, int count)
     {
+        if (ForceClearBuffers)
+            for (int i = 0; i < count; i++)
+                buffer[offset + i] = 0f;
+
         int samples = count;
 
         if (Enabled)
